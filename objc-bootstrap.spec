@@ -1,5 +1,5 @@
 Summary:	Portable Object Compiler - bootstrap version
-Summary(pl):	Przenaszalny Kompilator Obiektowego C - wersja do inicjacji
+Summary(pl):	Przeno¶ny kompilator obiektowego C - wersja do inicjacji
 Name:		objc-bootstrap
 Version:	3.1.33
 Release:	1
@@ -19,11 +19,10 @@ libraries and a precompiler (translator) that generates plain C.
 This version is destined only to bootstrap objc compiler.
 
 %description -l pl
-Przenaszalny Kompilator Obiektowego C zawiera zbiór bibliotek
-Obiektowego C oraz prekompilator (translator), który generuje kod
-¼ród³owy w czystym C.
-Ta wersja jest przeznaczona wy³±cznie do inicjacji w³a¶ciwego 
-kompilatora objc.
+Przeno¶ny kompilator obiektowego C zawiera zbiór bibliotek obiektowego
+C oraz prekompilator (translator), który generuje kod ¼ród³owy w
+czystym C. Ta wersja jest przeznaczona wy³±cznie do inicjacji
+w³a¶ciwego kompilatora objc.
 
 %prep
 %setup -q
