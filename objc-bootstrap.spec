@@ -1,76 +1,50 @@
-Summary:	Portable Object Compiler
-Summary(pl):	Przenaszalny Kompilator Obiektowego C
-Name:		objc
-Version:	3.2.5
-Release:	0.1
+Summary:	Portable Object Compiler - bootstrap version
+Summary(pl):	Przenaszalny Kompilator Obiektowego C - wersja do inicjacji
+Name:		objc-bootstrap
+Version:	3.1.33
+Release:	1
 License:	LGPL
 Group:		Development/Tools
 Source0:	http://users.pandora.be/stes/%{name}-%{version}.tar.gz
-# Source0-md5:	f75bbdf6ab6e1267e6e2f55609094341
-Patch0:		%{name}-lib64.patch
+# Source0-md5:	7e02a5ce5e9937c3bfced3a2af640dae
 URL:		http://users.pandora.be/stes/compiler.html
 BuildRequires:	automake
 BuildRequires:	byacc
 BuildRequires:	flex
-BuildRequires:	objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The Portable Object Compiler consists of a set of Objective-C class
 libraries and a precompiler (translator) that generates plain C.
+This version is destined only to bootstrap objc compiler.
 
 %description -l pl
 Przenaszalny Kompilator Obiektowego C zawiera zbiór bibliotek
 Obiektowego C oraz prekompilator (translator), który generuje kod
 ¼ród³owy w czystym C.
+Ta wersja jest przeznaczona wy³±cznie do inicjacji w³a¶ciwego 
+kompilatora objc.
 
 %prep
 %setup -q
 
-%if "%{_lib}" == "lib64"
-%patch0 -p1
-mv -f lib lib64
-ln -s lib64 lib
-%endif
-
 %build
 cp -f /usr/share/automake/config.* util
-%{__aclocal}
-%{__autoconf}
 %configure \
 	--with-cplus
-%{__make} \
-	OPT_MFLAGS="%{rpmcflags} -DNDEBUG"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix}/lib,%{_libdir},%{_datadir}}
+install -d $RPM_BUILD_ROOT%{_prefix}
 
 %{__make} install \
 	INSTALLDIR=$RPM_BUILD_ROOT%{_prefix}
-
-mv	$RPM_BUILD_ROOT%{_prefix}/ma* \
-	$RPM_BUILD_ROOT%{_datadir}
-
-mv	$RPM_BUILD_ROOT%{_mandir}/man3/Object.3 \
-	$RPM_BUILD_ROOT%{_mandir}/man3/ObjectO.3
-
-#%if "%{_lib}" != "lib"
-#mv -f $RPM_BUILD_ROOT{%{_libdir}/*.txt,%{_prefix}/lib}
-#%endif
-
-find $RPM_BUILD_ROOT -type -d -name CVS |xargs rm -rf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Books.txt Changes.txt Readme.txt *.html
+%doc BOOTSTRAP
 %attr(755,root,root) %{_bindir}/*
-%{_includedir}/*
-%{_libdir}/*.a
-%{_libdir}/*.o
-%{_libdir}/*.ld
-%{_prefix}/lib/*.txt
-%{_mandir}/man?/*
