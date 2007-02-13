@@ -1,5 +1,5 @@
 Summary:	Portable Object Compiler - bootstrap version
-Summary(pl.UTF-8):   Przenośny kompilator obiektowego C - wersja do inicjacji
+Summary(pl.UTF-8):	Przenośny kompilator obiektowego C - wersja do inicjacji
 Name:		objc-bootstrap
 Version:	3.1.33
 Release:	1
