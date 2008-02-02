@@ -1,12 +1,12 @@
 Summary:	Portable Object Compiler - bootstrap version
 Summary(pl.UTF-8):	Przenośny kompilator obiektowego C - wersja do inicjacji
 Name:		objc-bootstrap
-Version:	3.1.33
+Version:	3.2.8
 Release:	1
 License:	LGPL
 Group:		Development/Tools
 Source0:	http://users.pandora.be/stes/%{name}-%{version}.tar.gz
-# Source0-md5:	7e02a5ce5e9937c3bfced3a2af640dae
+# Source0-md5:	cc613d3496fff120c807f8dd4b00110f
 URL:		http://users.pandora.be/stes/compiler.html
 BuildRequires:	automake
 BuildRequires:	byacc
